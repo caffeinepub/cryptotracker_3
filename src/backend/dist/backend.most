@@ -1,0 +1,42 @@
+// Version: 1.0.0
+type CoinId__20143433 = Text;
+type CoinId__78952968 = CoinId__20143433;
+type Data__791452850<K, V> =
+  {var count : Nat__490723111; kvs : [var ?(K, V)]};
+type Holding__300230247 =
+  {
+    coinId : CoinId__78952968;
+    costBasis : Float;
+    quantity : Float;
+    totalCost : Float;
+    updatedAt : Timestamp__851919047
+  };
+type Internal__8484328<K, V> =
+  {children : [var ?Node__46230540<K, V>]; data : Data__791452850<K, V>};
+type Leaf__809889148<K, V> = {data : Data__791452850<K, V>};
+type Map__158565046<K, V> = Map__297112838<K, V>;
+type Map__297112838<K, V> =
+  {var root : Node__46230540<K, V>; var size : Nat__490723111};
+type Map__605269027<K, V> = Map__158565046<K, V>;
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type Node__46230540<K, V> =
+  {#internal : Internal__8484328<K, V>; #leaf : Leaf__809889148<K, V>};
+type Timestamp__301639476 = Int;
+type Timestamp__851919047 = Timestamp__301639476;
+type UserId__158757552 = Principal;
+type UserRole__1054455867 = {#admin; #guest; #user};
+actor {
+  stable accessControlState :
+    {
+      var adminAssigned : Bool;
+      userRoles : Map__605269027<Principal, UserRole__1054455867>
+    };
+  stable holdingsStore :
+    {
+      var root :
+        Node__46230540<UserId__158757552,
+                        Map__605269027<CoinId__20143433, Holding__300230247>>;
+      var size : Nat__490723111
+    }
+};

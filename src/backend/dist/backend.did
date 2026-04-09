@@ -1,0 +1,68 @@
+type http_request_result = 
+ record {
+   body: blob;
+   headers: vec http_header;
+   status: nat;
+ };
+type http_header = 
+ record {
+   name: text;
+   value: text;
+ };
+type UserRole = 
+ variant {
+   admin;
+   guest;
+   user;
+ };
+type UpdateHoldingRequest = 
+ record {
+   coinId: CoinId;
+   costBasis: float64;
+   quantity: float64;
+ };
+type TransformationOutput = 
+ record {
+   body: blob;
+   headers: vec http_header;
+   status: nat;
+ };
+type TransformationInput = 
+ record {
+   context: blob;
+   response: http_request_result;
+ };
+type Timestamp = int;
+type RawJson = text;
+type HoldingView = 
+ record {
+   coinId: CoinId;
+   costBasis: float64;
+   quantity: float64;
+   totalCost: float64;
+   updatedAt: Timestamp;
+ };
+type CoinId = text;
+type AddHoldingRequest = 
+ record {
+   coinId: CoinId;
+   priceAtTrade: float64;
+   quantity: float64;
+ };
+service : {
+  _initializeAccessControl: () -> ();
+  addHolding: (req: AddHoldingRequest) -> ();
+  assignCallerUserRole: (user: principal, role: UserRole) -> ();
+  getCallerUserRole: () -> (UserRole) query;
+  getCoinMetadata: (coinId: text) -> (RawJson);
+  getCoinPriceHistory: (coinId: text) -> (RawJson);
+  getCurrentPrices: (coinIds: text) -> (RawJson);
+  getFearGreedIndex: () -> (RawJson);
+  getHolding: (coinId: CoinId) -> (opt HoldingView) query;
+  getHoldings: () -> (vec HoldingView) query;
+  getTop100Coins: () -> (RawJson);
+  isCallerAdmin: () -> (bool) query;
+  removeHolding: (coinId: CoinId) -> ();
+  transform: (input: TransformationInput) -> (TransformationOutput) query;
+  updateHolding: (req: UpdateHoldingRequest) -> ();
+}

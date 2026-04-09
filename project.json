@@ -1,0 +1,29 @@
+{
+  "overview": "A high-performance, mobile-first Crypto Portfolio Tracker inspired by Delta and Bloomberg Terminal. Track holdings with real-time CoinGecko prices, visualize performance with interactive charts, and manage assets with an elegant slide-up transaction drawer — all behind Internet Identity login with a Deep Obsidian + Electric Emerald aesthetic.",
+  "features": [
+    "Internet Identity login with persistent portfolios",
+    "Real-time prices via CoinGecko API",
+    "Dashboard with sticky header, total balance, 24h pulse, and portfolio line chart",
+    "Asset list with sparklines, price flash animations, and stagger-in effects",
+    "Buy/sell transaction drawer with spring physics",
+    "Discover tab: live top 100 coins by market cap",
+    "Fear & Greed Index widget",
+    "Weighted average cost basis calculation",
+    "Deep Obsidian + Electric Emerald + Crimson Pulse theme",
+    "Glassmorphism headers, skeleton loaders, haptic-style micro-interactions"
+  ],
+  "category": "finance",
+  "tags": [
+    "crypto",
+    "portfolio",
+    "finance",
+    "real-time",
+    "coingecko",
+    "internet-identity",
+    "bloomberg",
+    "delta",
+    "charts",
+    "mobile-first"
+  ],
+  "last_updated": "2026-04-09T07:20:46.280Z"
+}
